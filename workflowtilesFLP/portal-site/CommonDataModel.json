@@ -1,0 +1,97 @@
+{
+	"_version": "3.0.0",
+	"identification": {
+		"id": "f23bee19-fdd3-4690-8c99-3b5df3409b5e-1569475133992",
+		"entityType": "bundle"
+	},
+	"payload": {
+		"catalogs": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "defaultCatalogId",
+				"title": "{{title}}",
+				"entityType": "catalog",
+				"i18n": "i18n/defaultCatalogId.properties"
+			},
+			"payload": {
+				"viz": []
+			}
+		}],
+		"groups": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "defaultGroupId",
+				"title": "{{title}}",
+				"entityType": "group",
+				"i18n": "i18n/defaultGroupId.properties"
+			},
+			"payload": {
+				"viz": [{
+					"id": "com.sap.bpm.monitorworkflow-0-1569475771450",
+					"appId": "com.sap.bpm.monitorworkflow",
+					"vizId": "bpmworkflowmonitor-DisplayInstances"
+				}, {
+					"id": "com.sap.bpm.monitorworkflow-1-1569475771450",
+					"appId": "com.sap.bpm.monitorworkflow",
+					"vizId": "bpmworkflowmonitor-DisplayDefinitions"
+				}, {
+					"id": "cross.fnd.fiori.inbox-2-1569475771450",
+					"appId": "cross.fnd.fiori.inbox",
+					"vizId": "WorkflowTask-DisplayMyInbox"
+				}]
+			}
+			},
+			{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "pwcGroupCustomApps",
+				"title": "{{pwcGroupTitle}}",
+				"entityType": "group",
+				"i18n": "i18n/defaultGroupId.properties"
+			},
+			"payload": {
+				"viz": [
+					{
+						"id": "appid-0-1556008257548",
+						"appId": "com.sap.bpm.wus.form.player",
+						"vizId": "workflow001_start"
+					}
+				]
+			}
+			}
+		],
+		"sites": [{
+			"_version": "3.0.0",
+			"identification": {
+				"id": "3a2a1ec5-91b5-4bb6-83ed-7716fe8d895d-1569475133992",
+				"entityType": "site",
+				"title": "SAP Fiori launchpad site on Cloud Foundry",
+				"description": "SAP Fiori launchpad site on Cloud Foundry, deployed from SAP Web IDE"
+			},
+			"payload": {
+				"config": {
+					"ushellConfig": {
+						"renderers": {
+							"fiori2": {
+								"componentData": {
+									"config": {
+										"applications": {
+											"Shell-home": {}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"groupsOrder": ["defaultGroupId", "pwcGroupCustomApps"],
+				"sap.cloud.portal": {
+					"config": {
+						"theme.id": "PWC_WF_FLP001",
+						"theme.active": ["sap_fiori_3", "sap_belize_hcb", "sap_belize_hcw", "PWC_WF_FLP001"]
+					}
+				}
+			}
+		}]
+	}
+}

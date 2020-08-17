@@ -1,0 +1,1 @@
+{"type":"cfportalsite","builders":{"default":"npm-builder","configs":{}},"runners":{"default":"system:/sap.site.content.deployer/default","configs":{}},"attributes":{},"description":"","mixinTypes":["mtamodule"]}
