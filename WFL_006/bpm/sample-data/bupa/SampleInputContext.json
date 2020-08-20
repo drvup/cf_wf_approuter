@@ -1,0 +1,14 @@
+{
+	"BusinessPartnerApproval": {
+		"ID": "AF796c-J9DpW7NvIZCrdSjELscy3",
+		"BusinessPartnerUUID": "ff88a914-10a7-4959-8fb9-85faa680701b",
+		"Action": "Approval",
+		"BusinessPartner": "$6",
+		"BusinessPartnerFunction": "Customer",
+		"FullName": "Apple Inc. US",
+		"CommentFromUI": "This is acomment",
+		"CreationDateTime": "2019-10-15T15:36:28Z",
+		"SenderBusinessSystemID": "STAGE_CF",
+		"RecipientBusinessSystemID": "WE"
+	}
+}

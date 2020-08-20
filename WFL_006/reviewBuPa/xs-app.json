@@ -1,0 +1,47 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/bpmworkflowruntime/(.*)$",
+      "target": "/$1",
+      "service": "com.sap.bpm.workflow",
+      "endpoint": "workflow_rest_url",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/mdmbupa/(.*)$",
+      "target": "$1",
+      "service": "com.sap.mdm.bp",
+      "endpoint": "odata",
+      "authenticationType": "xsuaa"
+    },
+    {
+      "source": "^/s1007/API_COUNTRY_SRV/(.*)",
+      "authenticationType": "xsuaa",
+      "destination": "WFL006toAPIM",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/s1011/mdmbupa/API_BUSINESS_PARTNER/(.*)",
+      "authenticationType": "xsuaa",
+      "destination": "WFL006toAPIM",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/s1012/mdmbupa/API_CODE_LIST/(.*)",
+      "authenticationType": "xsuaa",
+      "destination": "WFL006toAPIM",
+      "csrfProtection": false
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<SelectDialog app:InputSource="" growing="true" growingThreshold="10" noDataText="No Country Found" title="Country"
+		search="handleSearchCountry" confirm="handleValueHelpCountryConfirm" cancel="handleValueHelpCountryClose" showClearButton="false"
+		items="{ path: 'Country>/A_Country' }">
+		<StandardListItem title="{Country>Country}"/>
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,32 @@
+{
+    "id": "approvesomething",
+    "schemaVersion": "1.0.0",
+    "name": "approveSomething",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "userid",
+            "type": "string",
+            "label": "UserID",
+            "readOnly": true,
+            "value": "${context.user.userID}",
+            "constraints": {
+                "required": false
+            }
+        }
+    ],
+    "decisions": [
+        {
+            "id": "Approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        },
+        {
+            "id": "Reject",
+            "text": "Reject",
+            "decisionType": "negative"
+        }
+    ]
+}

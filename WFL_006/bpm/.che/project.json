@@ -1,0 +1,1 @@
+{"type":"com.sap.content.module","builders":{"default":"content-module-builder","configs":{}},"runners":{"configs":{}},"attributes":{"sap.watt.common.setting":["{\"content-module\":{\"service\":\"workflow\"},\"projectType\":[\"com.sap.content.module\"]}"]},"description":"","mixinTypes":["mtamodule"]}

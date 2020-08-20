@@ -1,0 +1,561 @@
+<mvc:View xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="com.sap.cloud.workflow.wfl006.reviewBuPa.controller.reviewBuPa">
+	<uxap:ObjectPageLayout id="ObjectPageLayout" showFooter="true" showTitleInHeaderContent="true" showEditHeaderButton="false"
+		editHeaderButtonPress="handleEditBtnPress">
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:expandedHeading>
+					<Title
+						text="{MDMJSON>/to_Organization/0/OrganizationName1} {MDMJSON>/to_Organization/0/OrganizationName2} {MDMJSON>/to_Organization/0/OrganizationName3} {MDMJSON>/to_Organization/0/OrganizationName4}{MDMJSON>/to_Person/0/FirstName} {MDMJSON>/to_Person/0/LastName}"
+						wrapping="true"/>
+				</uxap:expandedHeading>
+				<uxap:snappedHeading>
+					<FlexBox fitContainer="true" alignItems="Center">
+						<Avatar src="sap-icon://building" class="sapUiTinyMarginEnd"/>
+						<Title text="{MDMJSON>/to_Organization/0/OrganizationName1} {MDMJSON>/to_Organization/0/OrganizationName2} {MDMJSON>/to_Organization/0/OrganizationName3} {MDMJSON>/to_Organization/0/OrganizationName4}{MDMJSON>/to_Person/0/FirstName} {MDMJSON>/to_Person/0/LastName}" wrapping="true"/>
+					</FlexBox>
+				</uxap:snappedHeading>
+				<uxap:expandedContent>
+					<!--<Text text="Senior UI Developer"/>-->
+				</uxap:expandedContent>
+				<uxap:snappedContent>
+					<!--<Text text="Senior UI Developer"/>-->
+				</uxap:snappedContent>
+				<uxap:snappedTitleOnMobile>
+					<!--<Title text="Header Title On Phone"/>-->
+				</uxap:snappedTitleOnMobile>
+				<!--<uxap:actions>
+					<OverflowToolbarButton icon="sap-icon://pull-down" text="show section" type="Emphasized" tooltip="pull-down"/>
+					<OverflowToolbarButton icon="sap-icon://show" text="show state" tooltip="show"/>
+					<Button text="Toggle Footer" press="toggleFooter"/>
+				</uxap:actions>-->
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+		<uxap:headerContent>
+			<FlexBox wrap="Wrap">
+				<Avatar class="sapUiSmallMarginEnd"
+					src="{path: 'MDMJSON>/Category', formatter: '.formatter.formatAvatarIcon'}" displaySize="L"/>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<HBox>
+						<Label text="{i18n>lblBuPaType}:" class="sapUiTinyMarginBeginEnd"/>
+						<Text text="{path: 'MDMJSON>/Category', formatter: '.formatter.formatBuPaTypeHeaderInfo'}"/>
+					</HBox>
+				</layout:VerticalLayout>
+				<layout:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+					<!--<Image src="./test-resources/sap/uxap/images/linkedin.png"/>
+					<Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin"/>-->
+				</layout:HorizontalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<VBox class="sapUiLargeMarginBeginBottom">
+						<Title text="{i18n>entityGeneralRight}" class="sapUiLargeMarginBeginBottom"/>
+						<Text
+							text="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/StreetName} {MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/HouseNumber} {MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PostalCode} {MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PostalAddress/CityName} {MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PostalAddress/Country}"/>
+					</VBox>
+					<!--<Label text="Hello! I am Denise and I use UxAP"/>
+					<VBox>
+						<Label text="Achieved goals"/>
+						<ProgressIndicator percentValue="30" displayValue="30%"/>
+					</VBox>-->
+				</layout:VerticalLayout>
+				<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+					<!--<Label text="San Jose, USA"/>-->
+				</layout:VerticalLayout>
+			</FlexBox>
+		</uxap:headerContent>
+		<uxap:sections>
+			<uxap:ObjectPageSection id="generalSection" title="{i18n>tabEntityGeneral}">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="generalSection_1">
+						<uxap:blocks>
+							<VBox class="sapUiSmallMargin">
+								<f:Form id="Form_firstTab" editable="true">
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+											emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer title="{i18n>entityGeneralLeft}">
+											<f:formElements>
+												<f:FormElement label="{i18n>lblBuPaType}">
+													<Select id="selectBuPaType" selectedKey="{MDMJSON>/Category}" change="onBuPaTypeChange" forceSelection="false"
+														editable="{ViewModel>/inputsEditable}" required="true">
+														<core:ListItem key="1" text="{i18n>txtExternalPerson}"/>
+														<core:ListItem key="2" text="{i18n>txtExternalOrg}"/>
+													</Select>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblFirstName}" visible="{ViewModel>/fullnameInputsVisible}">
+													<Input id="inputFirstName" value="{MDMJSON>/to_Person/0/FirstName}" editable="{ViewModel>/inputsEditable}" required="true"/>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblLastName}" visible="{ViewModel>/fullnameInputsVisible}">
+													<Input id="inputLastName" value="{MDMJSON>/to_Person/0/LastName}" editable="{ViewModel>/inputsEditable}" required="true"/>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblEntityName}" visible="{ViewModel>/nameInputsVisible}">
+													<Input id="inputEntityName" value="{MDMJSON>/to_Organization/0/OrganizationName1}" change="onChangeEntityName" editable="{ViewModel>/inputsEditable}" required="true"/>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblBuPaFunction}">
+													<Select id="selectBuPaFunction" selectedKey="{MDMJSON>/to_Role/0/Role}" change="onChangeBuPaFunction" forceSelection="false"
+														editable="{ViewModel>/inputsEditable}" required="true">
+														<core:ListItem key="FLCU01" text="{i18n>txtCustomer}"/>
+														<core:ListItem key="FLVN01" text="{i18n>txtCreditor}"/>
+													</Select>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</VBox>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection id="addressSection" title="{i18n>tabEntityAddresses}" importance="Medium">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="addressSection_1">
+						<uxap:blocks>
+							<VBox class="sapUiSmallMargin">
+								<f:Form id="Form_addressSection" editable="true">
+									<!--<f:title>
+											<core:Title text="Address"/>
+										</f:title>-->
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+											emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer title="{i18n>entityGeneralRight}">
+											<f:formElements>
+												<f:FormElement label="{i18n>lblStreet}/{i18n>lblHouseNumber}">
+													<f:fields>
+														<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/StreetName}" id="inputStreet"
+															editable="{ViewModel>/inputsEditable}"/>
+														<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/HouseNumber}" id="inputHouseNumber"
+															editable="{ViewModel>/inputsEditable}" required="true">
+															<layoutData>
+																<layout:GridData span="XL1 L2 M2 S4"/>
+															</layoutData>
+														</Input>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblPostalCode}/{i18n>lblCity}">
+													<f:fields>
+														<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PostalCode}" id="inputPostalCode"
+															editable="{ViewModel>/inputsEditable}" required="true">
+															<layoutData>
+																<layout:GridData span="XL1 L2 M2 S4"/>
+															</layoutData>
+														</Input>
+														<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/CityName}" id="inputCity"
+															editable="{ViewModel>/inputsEditable}" required="true"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblCountry}">
+													<f:fields>
+														<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/Country}" id="inputCountry"
+															editable="{ViewModel>/inputsEditable}" valueHelpRequest="onPressVHCountry" showValueHelp="true" required="true"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblStateProvince}">
+													<f:fields>
+														<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/Region}" id="inputRegion"
+															editable="{ViewModel>/inputsEditable}"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblPostBox}">
+													<f:fields>
+														<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PoBox}" id="inputPostBox"
+															editable="{ViewModel>/inputsEditable}"/>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblCorrespondenceLanguage}">
+													<f:fields>
+														<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/CorrespondenceLanguage}"
+															id="inputCorrespondenceLanguage" editable="{ViewModel>/inputsEditable}" required="true"/>
+													</f:fields>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</VBox>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+				<!--<uxap:subSections>
+					<uxap:ObjectPageSubSection id="personalSectionSS1" title="Connect">
+						<uxap:blocks>
+							<Text text="test"/>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+					<uxap:ObjectPageSubSection id="personalSectionSS2" title="Payment information">
+						<uxap:blocks>
+							<Text text="test"/>
+						</uxap:blocks>
+						<uxap:moreBlocks>
+							<Text text="test"/>
+						</uxap:moreBlocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>-->
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection id="employmentSection" title="{i18n>tabEntityAccounting}">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="employmentSectionSS1" title="Job information">
+						<uxap:blocks>
+							<FlexBox width="100%" id="__box1" fitContainer="true">
+								<items>
+									<Table id="tablePaymentDetails" inset="false" delete="deleteRow" noDataText="{i18n>noDataText}" items="">
+										<headerToolbar>
+											<Toolbar>
+												<Title text="{i18n>AccountingInfo}" level="H3"/>
+												<ToolbarSpacer/>
+												<Button icon="sap-icon://add" id="buttonAddPaymentDetail" press="addAccountingDialog"/>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column>
+												<Text text="{i18n>ID}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>BankCountry}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>BankNumber}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>BankIdentification}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>BankAccountName}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>AccountHolderName}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>AccountReferenceText}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>BankControlKey}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>IBAN}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>IBANValidFrom}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>ValidFrom}"/>
+											</Column>
+											<Column demandPopin="true">
+												<Text text="{i18n>ValidTo}"/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<Input value="{MDMJSON>/to_Bank/0/Id}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankCountryKey}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankNumber}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankIdentification}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankAccountName}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/AccountHolderName}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankAccountReferenceText}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/BankControlKey}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<Input value="{MDMJSON>/to_Bank/0/IBAN}" change="onChangeIBAN" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<DatePicker value="{MDMJSON>/to_Bank/0/IBANValidityStartDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<DatePicker value="{MDMJSON>/to_Bank/0/ValidityStartDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+													<DatePicker value="{MDMJSON>/to_Bank/0/ValidityEndDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</items>
+							</FlexBox>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+					<!--<ObjectPageSubSection id="employmentSectionSS2" title="Employee Details" importance="Medium">
+						<blocks>
+							<employment:BlockEmpDetailPart1 id="empdetailpart1" columnLayout="1"/>
+						</blocks>
+						<moreBlocks>
+							<employment:BlockEmpDetailPart2 id="empdetailpart2" columnLayout="1"/>
+							<employment:BlockEmpDetailPart3 id="empdetailpart3" columnLayout="1"/>
+						</moreBlocks>
+					</ObjectPageSubSection>
+					<ObjectPageSubSection id="employmentSectionSS3" title="Job Relationship" importance="Low">
+						<blocks>
+							<employment:EmploymentBlockJob id="employmentblockjob" showSubSectionMore="true">
+								<employment:mappings>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp1" externalPath="/Employee/0"/>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp2" externalPath="/Employee/1"/>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp3" externalPath="/Employee/2"/>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp4" externalPath="/Employee/3"/>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp5" externalPath="/Employee/4"/>
+									<ModelMapping externalModelName="ObjectPageModel" internalModelName="emp6" externalPath="/Employee/5"/>
+								</employment:mappings>
+							</employment:EmploymentBlockJob>
+						</blocks>
+					</ObjectPageSubSection>-->
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection id="commentSection" title="{i18n>tabEntityComment}">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="commentSectionSS1">
+						<uxap:blocks>
+							<VBox>
+								<Label text="{i18n>lblNote}:"/>
+								<TextArea id="taComment" value="{wfl>/BusinessPartnerApproval/CommentFromUI}" growing="true" width="100%" editable="false"/>
+							</VBox>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection id="PersontSection" title="{i18n>tabPerson}">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection id="PersonSectionSS1" app:GUID="{MDMJSON>/to_Person/0/Id}" app:Entity="PersonName" app:Model="PersonName">
+						<uxap:blocks>
+							<VBox>
+								<f:Form id="Form_PersonTab" editable="true">
+									<f:toolbar>
+										<Toolbar id="TS_Person">
+											<ToolbarSpacer />
+											<Button icon="sap-icon://refresh" press="onPressPersonIcon"/>
+											<Button icon="sap-icon://save" press="onPressPersonIconSave"/>
+										</Toolbar>
+									</f:toolbar>
+									<f:layout>
+										<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+											emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+									</f:layout>
+									<f:formContainers>
+										<f:FormContainer title="{i18n>entityGeneralLeft}">
+											<f:formElements>
+												<f:FormElement label="{i18n>lblFirstName}" visible="true">
+													<Input id="FirstName" value="{PersonName>/FirstName}" editable="{ViewModel>/inputsEditable}" />
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblLastName}" visible="true">
+													<Input id="LastName" value="{PersonName>/LastName}" editable="{ViewModel>/inputsEditable}" />
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblNickName}" visible="true">
+													<Input id="NickName" value="{PersonName>/NickName}"  editable="{ViewModel>/inputsEditable}" />
+												</f:FormElement>
+												<f:FormElement label="{i18n>lblGender}" visible="true">
+													<Input id="Gender" value="{PersonName>/Gender}"  editable="{ViewModel>/inputsEditable}" />
+												</f:FormElement>
+												<f:FormElement label="Id" visible="true">
+													<Input id="Gendewdr" value="{PersonName>/Parent_Id}" editable="{ViewModel>/inputsEditable}"/>
+												</f:FormElement>
+											</f:formElements>
+										</f:FormContainer>
+									</f:formContainers>
+								</f:Form>
+							</VBox>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+		<!--<uxap:footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button id="btnSend" text="{i18n>btnSend}" type="Emphasized" press="onSendBuPa" visible="{ViewModel>/cancelButtonVisible}"/>
+				<Button text="{i18n>btnSendFromSource}" type="Emphasized" press="onPressSendFromSourceTemplate"
+					visible="{ViewModel>/sendFromSourceButtonVisible}"/>
+				<Button text="{i18n>btnCancel}" type="Reject" press="onPressCancelCreateNewEntity" visible="{ViewModel>/cancelButtonVisible}"/>
+			</OverflowToolbar>
+		</uxap:footer>-->
+	</uxap:ObjectPageLayout>
+	<!--	<App height="90%">
+		<pages>
+			<Page title="{i18n>title}" showHeader="false" showFooter="false">
+				<content>
+					<ObjectHeader title="{/task/Title}" titleActive="false" id="__header0">
+						<attributes>
+							<ObjectAttribute title="{i18n>createdOn}" text="{/task/CreatedOn}"/>
+							<ObjectAttribute title="{i18n>description}" text="{/task/Description}"/>
+						</attributes>
+						<statuses>
+							<ObjectStatus text="{/task/Status}" state="None"/>
+							<ObjectStatus text="{/task/Priority}" state="{/task/PriorityState}"/>
+						</statuses>
+					</ObjectHeader>
+					<IconTabBar selectedKey="__filter0" id="__bar0">
+						<items>
+							<IconTabFilter icon="sap-icon://hint" id="__filter0" text="{i18n>tabEntityGeneral}">
+								<content>
+									<VBox class="sapUiSmallMargin">
+										<f:Form id="Form_firstTab" editable="true">
+											<f:layout>
+												<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="3" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4"
+													emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false"/>
+											</f:layout>
+											<f:formContainers>
+												<f:FormContainer title="{i18n>entityGeneralLeft}">
+													<f:formElements>
+														<f:FormElement label="{i18n>lblBuPaType}">
+															<Select id="selectBuPaType" selectedKey="{MDMJSON>/Category}" change="onBuPaTypeChange" forceSelection="false"
+																editable="{ViewModel>/inputsEditable}" required="true">
+																<core:ListItem key="1" text="{i18n>txtExternalPerson}"/>
+																<core:ListItem key="2" text="{i18n>txtExternalOrg}"/>
+															</Select>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblFirstName}" visible="{ViewModel>/fullnameInputsVisible}">
+															<Input id="inputFirstName" value="" editable="{ViewModel>/inputsEditable}" required="true"/>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblLastName}" visible="{ViewModel>/fullnameInputsVisible}">
+															<Input id="inputLastName" value="" editable="{ViewModel>/inputsEditable}" required="true"/>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblEntityName}" visible="{ViewModel>/nameInputsVisible}">
+															<Input id="inputEntityName" value="{MDMJSON>/FullName}" change="onChangeEntityName" editable="{ViewModel>/inputsEditable}" required="true"/>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblBuPaFunction}">
+															<Select id="selectBuPaFunction" selectedKey="{MDMJSON>/to_Role/0/Role}" change="onChangeBuPaFunction" forceSelection="false"
+																editable="{ViewModel>/inputsEditable}" required="true">
+																<core:ListItem key="FLCU01" text="{i18n>txtCustomer}"/>
+																<core:ListItem key="FLVN01" text="{i18n>txtCreditor}"/>
+															</Select>
+														</f:FormElement>
+													</f:formElements>
+												</f:FormContainer>
+												<f:FormContainer title="{i18n>entityGeneralRight}">
+													<f:formElements>
+														<f:FormElement label="{i18n>lblStreet}/{i18n>lblHouseNumber}">
+															<f:fields>
+																<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/StreetName}" id="inputStreet"
+																	editable="{ViewModel>/inputsEditable}"/>
+																<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/HouseNumber}" id="inputHouseNumber"
+																	editable="{ViewModel>/inputsEditable}" required="true">
+																	<layoutData>
+																		<l:GridData span="XL1 L2 M2 S4"/>
+																	</layoutData>
+																</Input>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblPostalCode}/{i18n>lblCity}">
+															<f:fields>
+																<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PostalCode}" id="inputPostalCode"
+																	editable="{ViewModel>/inputsEditable}" required="true">
+																	<layoutData>
+																		<l:GridData span="XL1 L2 M2 S4"/>
+																	</layoutData>
+																</Input>
+																<Input value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/CityName}" id="inputCity"
+																	editable="{ViewModel>/inputsEditable}" required="true"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblCountry}">
+															<f:fields>
+																<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/Country}" id="inputCountry"
+																	editable="{ViewModel>/inputsEditable}" valueHelpRequest="onPressVHCountry" showValueHelp="true" required="true"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblStateProvince}">
+															<f:fields>
+																<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/Region}" id="inputRegion"
+																	editable="{ViewModel>/inputsEditable}"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblPostBox}">
+															<f:fields>
+																<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/PoBox}" id="inputPostBox"
+																	editable="{ViewModel>/inputsEditable}"/>
+															</f:fields>
+														</f:FormElement>
+														<f:FormElement label="{i18n>lblCorrespondenceLanguage}">
+															<f:fields>
+																<Input xmlns="sap.m" value="{MDMJSON>/to_AddressInformation/0/to_AddressUsage/0/to_Address/to_PostalAddress/0/CorrespondenceLanguage}"
+																	id="inputCorrespondenceLanguage" editable="{ViewModel>/inputsEditable}" required="true"/>
+															</f:fields>
+														</f:FormElement>
+													</f:formElements>
+												</f:FormContainer>
+											</f:formContainers>
+										</f:Form>
+										<VBox>
+											<Label text="{i18n>lblNote}:"/>
+											<TextArea value="{wfl>/BusinessPartnerApproval/CommentFromUI}" growing="true" width="100%" editable="false"/>
+										</VBox>
+									</VBox>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://address-book" id="__filter1" visible="true" text="{i18n>tabEntityAdresses}"/>
+							<IconTabFilter icon="sap-icon://accounting-document-verification" id="__filter2" visible="true" text="{i18n>tabEntityAccounting}">
+								<content>
+									<Label text="{i18n>AccountingInfo}" width="100%" id="label6"/>
+									<FlexBox width="100%" id="__box1" fitContainer="true">
+										<items>
+											<Table id="tablePaymentDetails" inset="false" delete="deleteRow" noDataText="{i18n>noDataText}" items="">
+												<headerToolbar>
+													<Toolbar>
+														<Title text="{i18n>tableTitle}" level="H3"/>
+														<ToolbarSpacer/>
+														<Button icon="sap-icon://add" id="buttonAddPaymentDetail" press="addAccountingDialog"/>
+													</Toolbar>
+												</headerToolbar>
+												<columns>
+													<Column>
+														<Text text="{i18n>ID}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>BankCountry}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>BankNumber}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>BankIdentification}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>BankAccountName}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>AccountHolderName}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>AccountReferenceText}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>BankControlKey}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>IBAN}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>IBANValidFrom}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>ValidFrom}"/>
+													</Column>
+													<Column demandPopin="true">
+														<Text text="{i18n>ValidTo}"/>
+													</Column>
+												</columns>
+												<items>
+													<ColumnListItem>
+														<cells>
+															<Input value="{MDMJSON>/to_Bank/0/Id}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankCountryKey}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankNumber}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankIdentification}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankAccountName}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/AccountHolderName}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankAccountReferenceText}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/BankControlKey}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<Input value="{MDMJSON>/to_Bank/0/IBAN}" change="onChangeIBAN" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<DatePicker value="{MDMJSON>/to_Bank/0/IBANValidityStartDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<DatePicker value="{MDMJSON>/to_Bank/0/ValidityStartDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+															<DatePicker value="{MDMJSON>/to_Bank/0/ValidityEndDate}" editable="{= ${ViewModel>/inputsEditable} === true ? false : true }"/>
+														</cells>
+													</ColumnListItem>
+												</items>
+											</Table>
+										</items>
+									</FlexBox>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>-->
+</mvc:View>

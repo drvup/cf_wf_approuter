@@ -1,0 +1,36 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog title="Add Accounting Data" type="Standard" class="sapUiContentPadding">
+		<content>
+			<Label text="Id:" required="true"/>
+			<Input id="input_Id" class="sapUiTinyMarginBottom"/>
+			<Label text="BankAccount:" required="true"/>
+			<Input id="input_Bankaccount" class="sapUiTinyMarginBottom"/>
+			<Label text="AccountHolderName:" required="true"/>
+			<Input id="input_AccountHolderName" class="sapUiTinyMarginBottom"/>
+			<Label text="BankAccountName:"/>
+			<Input id="input_BankAccountName" submit="onSubmitAddProject" class="sapUiTinyMarginBottom"/>
+			<Label text="BankAccountReferenceText:"/>
+			<Input id="input_BankAccountReferenceText" class="sapUiTinyMarginBottom"/>
+			<Label text="BankControlKey:"/>
+			<Input id="input_BankControlKey" submit="onSubmitAddProject" class="sapUiTinyMarginBottom"/>
+			<Label text="BankCountryKey:"/>
+			<Input id="input_BankCountryKey" class="sapUiTinyMarginBottom"/>
+			<Label text="BankIdentification:" required="true"/>
+			<Input id="input_BankIdentification" submit="onSubmitAddProject" class="sapUiTinyMarginBottom"/>
+			<Label text="BankNumber:" required="true"/>
+			<Input id="input_BankNumber" class="sapUiTinyMarginBottom"/>
+			<Label text="IBAN:" required="true"/>
+			<Input id="input_IBAN" submit="onSubmitAddProject" class="sapUiTinyMarginBottom"/>
+			<Label text="IBANStartDate:"/>
+			<DatePicker id="input_IBANStartDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" class="sapUiTinyMarginBottom"/>
+			<Label text="StartDate:"/>
+			<DatePicker id="input_StartDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd" class="sapUiTinyMarginBottom"/>
+			<Label text="EndDate:"/>
+			<DatePicker id="input_EndDate" displayFormat="yyyy-MM-dd" valueFormat="yyyy-MM-dd"/>
+		</content>
+		<buttons>
+			<Button text="Save" type="Emphasized" press="_onSubmitAddItem"/>
+			<Button text="Close" press="onAccCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
